@@ -33,8 +33,10 @@ class MainActivity : ComponentActivity() {
 fun Greeting(name: String, modifier: Modifier = Modifier) {
     Text(
         text = "Hello $name!",
+        
         modifier = modifier
     )
+    Text(text = "Age: 21")
 }
 
 @Preview(showBackground = true)
