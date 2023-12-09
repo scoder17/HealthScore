@@ -1,6 +1,5 @@
 package com.example.healthscore.data
 
-import android.icu.text.CaseMap.Title
 import androidx.compose.ui.graphics.vector.ImageVector
 
 data class BottomNavigationItem (
