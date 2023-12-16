@@ -1,3 +1,59 @@
 <resources>
     <string name="app_name">Health Score</string>
+
+    <string name="h1">Asthma</string>
+    <string name="b1">
+        • Follow your prescribed treatment plan, including medications and insulin if needed.\n
+        • Monitor blood sugar levels regularly.\n
+        • Maintain a healthy diet and exercise regularly.\n
+        • Report any unusual symptoms or changes to your healthcare provider.
+    </string>
+
+    <string name="h2">Depression</string>
+    <string name="b2">
+        • Seek professional help from a mental health provider.\n
+        • Follow prescribed medications and attend therapy sessions.\n
+        • Maintain a supportive network of friends and family.\n
+        • Engage in activities you enjoy and prioritize self-care.
+    </string>
+
+    <string name="h3">Diabetes</string>
+    <string name="b3">
+        • Follow your prescribed treatment plan, including medications and insulin if needed.\n
+        • Monitor blood sugar levels regularly.\n
+        • Maintain a healthy diet and exercise regularly.\n
+        • Report any unusual symptoms or changes to your healthcare provider.\n
+    </string>
+
+    <string name="h4">GERD</string>
+    <string name="b4">
+        • Avoid trigger foods and eat smaller, more frequent meals.\n
+        • Elevate the head of your bed to reduce nighttime reflux.\n
+        • Take prescribed medications as directed.\n
+        • Report persistent symptoms to your healthcare provider.
+    </string>
+
+    <string name="h5">High Blood Pressure</string>
+    <string name="b5">
+        • Take prescribed medications regularly.\n
+        • Adopt a low-sodium diet rich in fruits, vegetables, and whole grains.\n
+        • Engage in regular physical activity.\n
+        • Monitor blood pressure at home and report readings to your healthcare provider.
+    </string>
+
+    <string name="h6">Migraine</string>
+    <string name="b6">
+        • Identify and avoid triggers (e.g., certain foods, lack of sleep).\n
+        • Take prescribed medications as soon as symptoms begin.\n
+        • Rest in a quiet, dark room during an attack.\n
+        • Consult with a healthcare provider for a personalized migraine management plan.
+    </string>
+
+    <string name="h7">Osteoarthritis</string>
+    <string name="b7">
+        • Engage in low-impact exercises to maintain joint flexibility.\n
+        • Use pain relievers and anti-inflammatory medications as prescribed.\n
+        • Apply heat or cold packs to affected joints for pain relief.\n
+        • Consider physical therapy for joint strengthening.
+    </string>
 </resources>
