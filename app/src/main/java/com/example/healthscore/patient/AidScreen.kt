@@ -38,7 +38,7 @@ import com.example.healthscore.data.aids
 @Preview
 @Composable
 fun AidScreen(modifier: Modifier = Modifier.safeContentPadding()) {
-    LazyColumn(modifier = modifier.padding(top = 65.dp)) {
+    LazyColumn(modifier = modifier.padding(top = 65.dp, bottom = 65.dp)) {
         items(aids) {
             AidItem(
                 aid = it,
@@ -46,7 +46,6 @@ fun AidScreen(modifier: Modifier = Modifier.safeContentPadding()) {
             )
         }
     }
-
 }
 
 @Composable
