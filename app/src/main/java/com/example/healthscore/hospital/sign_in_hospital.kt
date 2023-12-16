@@ -61,7 +61,7 @@ fun Sign_in_hospital(navController: NavHostController){
         }
         Button(
             onClick = {
-                      navController.navigate("")
+                      navController.navigate("department_screen")
             },
             modifier = Modifier.size(180.dp,50.dp)
         ) {

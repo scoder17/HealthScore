@@ -21,6 +21,7 @@ import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
+import com.example.healthscore.hospital.DepartmentScreen
 import com.example.healthscore.hospital.Sign_in_hospital
 import com.example.healthscore.hospital.Sign_up_hospital
 import com.example.healthscore.patient.Sign_in_patient
@@ -47,6 +48,9 @@ fun App() {
         }
         composable("patient_home"){
             Navigation()
+        }
+        composable("department_screen"){
+            DepartmentScreen()
         }
     }
 
