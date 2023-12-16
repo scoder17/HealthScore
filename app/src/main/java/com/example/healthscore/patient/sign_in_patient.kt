@@ -35,9 +35,6 @@ import kotlinx.coroutines.launch
 @Composable
 fun Sign_in_patient(patientDataViewModel: PatientDataViewModel = viewModel()) {
 
-    var res by remember {
-        mutableStateOf(PatientData())
-    }
     val coroutineScope = rememberCoroutineScope()
     var userEmail by remember { mutableStateOf("") }
     var userPassword by remember { mutableStateOf("") }
