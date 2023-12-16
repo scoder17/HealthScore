@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "818391411530",
+    "project_id": "health-score-99ec6",
+    "storage_bucket": "health-score-99ec6.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:818391411530:android:d923cc6fdbeb6b80506fb3",
+        "android_client_info": {
+          "package_name": "com.example.healthscore"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB9VvtXbAV1ghnR7mYBHFhyyQqyUz6Rx5U"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -8,6 +8,9 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
 import androidx.compose.ui.Modifier
 import com.example.compose.HealthScoreTheme
+import com.example.healthscore.patient.PatientDataViewModel
+import com.example.healthscore.patient.Sign_in_patient
+import com.example.healthscore.patient.Sign_up_patient
 
 
 class MainActivity : ComponentActivity() {
@@ -20,7 +23,7 @@ class MainActivity : ComponentActivity() {
                     modifier = Modifier.fillMaxSize(),
                     color = MaterialTheme.colorScheme.background
                 ) {
-                    SignInScreen()
+                    Sign_in_patient(PatientDataViewModel())
                 }
             }
         }
