@@ -28,6 +28,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.lifecycle.viewmodel.compose.viewModel
 import com.example.compose.HealthScoreTheme
+import com.example.healthscore.data.GlobalVariable
 import com.example.healthscore.data.PatientData
 import kotlinx.coroutines.launch
 
@@ -73,6 +74,7 @@ fun Sign_in_patient(patientDataViewModel: PatientDataViewModel = viewModel()) {
                 if(res.password==userPassword)
                 {
                     Log.d(TAG, "Sign_in_patient: Sucess")
+                    GlobalVariable.User=res
                 }
                 else
                     Log.d(TAG, "Sign_in_patient: Errpr")

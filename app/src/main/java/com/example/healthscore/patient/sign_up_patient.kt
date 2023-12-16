@@ -4,15 +4,19 @@ import android.util.Log
 import android.widget.Toast
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.text.KeyboardActions
+import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Visibility
 import androidx.compose.material.icons.filled.VisibilityOff
 import androidx.compose.material3.Button
+import androidx.compose.material3.DropdownMenu
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.Text
@@ -27,6 +31,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.platform.LocalFocusManager
 import androidx.compose.ui.res.colorResource
+import androidx.compose.ui.text.input.ImeAction
 import androidx.compose.ui.text.input.PasswordVisualTransformation
 import androidx.compose.ui.text.input.TextFieldValue
 import androidx.compose.ui.text.input.VisualTransformation
@@ -45,6 +50,8 @@ fun Sign_up_patient() {
     var userName by remember { mutableStateOf("") }
     var iniPassword by remember { mutableStateOf("") }
     var cnfPassword by remember { mutableStateOf("") }
+    var userGender by remember { mutableStateOf("") }
+    var userAge by remember { mutableStateOf("") }
     var showPassword by remember {
         mutableStateOf(false)
     }
@@ -56,14 +63,33 @@ fun Sign_up_patient() {
         horizontalAlignment = Alignment.CenterHorizontally,
     ) {
         Text(text = "Patient Sign Up", style = MaterialTheme.typography.headlineMedium)
-        Spacer(modifier = Modifier.padding(30.dp))
+        Spacer(modifier = Modifier.padding(15.dp))
         OutlinedTextField(
             value = userName,
             onValueChange = { userName = it },
             label = { Text(text = "Name") },
             modifier = Modifier
                 .fillMaxWidth()
-                .padding(10.dp)
+                .padding(10.dp),
+            keyboardOptions = KeyboardOptions(imeAction = ImeAction.Next)
+        )
+        OutlinedTextField(
+            value = userAge,
+            onValueChange = { userAge = it },
+            label = { Text(text = "Age") },
+            modifier = Modifier
+                .fillMaxWidth()
+                .padding(10.dp),
+            keyboardOptions = KeyboardOptions(imeAction = ImeAction.Next)
+        )
+        OutlinedTextField(
+            value = userGender,
+            onValueChange = { userGender = it },
+            label = { Text(text = "Enter Gender") },
+            modifier = Modifier
+                .fillMaxWidth()
+                .padding(10.dp),
+            keyboardOptions = KeyboardOptions(imeAction = ImeAction.Next)
         )
         OutlinedTextField(
             value = userMail,
@@ -71,8 +97,10 @@ fun Sign_up_patient() {
             label = { Text(text = "Email address") },
             modifier = Modifier
                 .fillMaxWidth()
-                .padding(10.dp)
+                .padding(10.dp),
+            keyboardOptions = KeyboardOptions(imeAction = ImeAction.Next)
         )
+
         OutlinedTextField(
             value = iniPassword,
             onValueChange = { iniPassword = it },
@@ -95,7 +123,8 @@ fun Sign_up_patient() {
             },
             modifier = Modifier
                 .fillMaxWidth()
-                .padding(10.dp)
+                .padding(10.dp),
+            keyboardOptions = KeyboardOptions(imeAction = ImeAction.Next)
         )
         OutlinedTextField(
             value = cnfPassword,
@@ -105,18 +134,21 @@ fun Sign_up_patient() {
             else PasswordVisualTransformation(),
             modifier = Modifier
                 .fillMaxWidth()
-                .padding(10.dp)
+                .padding(10.dp),
+            keyboardOptions = KeyboardOptions(imeAction = ImeAction.Done),
         )
         TextButton(modifier = Modifier.align(Alignment.Start), onClick = { /*TODO*/ }) {
-            Text(text = "Already have an account?")
+            Text(text = "Already have an account?", modifier = Modifier.padding(bottom = 10.dp))
         }
         Button(
             onClick = {
-                if(iniPassword==cnfPassword){
-                      val patientData=PatientData(userName,userMail,iniPassword, mutableListOf())
-                      addDataToFireBase(patientData)
-                }
-                else{
+                if (iniPassword == cnfPassword) {
+                    val patientData = PatientData(
+                        userName, userMail, iniPassword, userAge, userGender,
+                        mutableListOf(), mutableListOf()
+                    )
+                    addDataToFireBase(patientData)
+                } else {
                     Log.d(TAG, "Sign_up_patient: Password Mismatched")
                 }
             },

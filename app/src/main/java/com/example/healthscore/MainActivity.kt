@@ -8,6 +8,7 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
 import androidx.compose.ui.Modifier
 import com.example.compose.HealthScoreTheme
+import com.example.healthscore.patient.Sign_up_patient
 
 
 class MainActivity : ComponentActivity() {
@@ -21,7 +22,7 @@ class MainActivity : ComponentActivity() {
                     color = MaterialTheme.colorScheme.background
                 ) {
 //                    WelcomeScreen()
-                    Navigation()
+                    Sign_up_patient()
                 }
             }
         }

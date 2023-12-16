@@ -31,10 +31,12 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import com.example.healthscore.data.GlobalVariable
 
 @Preview(showBackground = true, showSystemUi = true)
 @Composable
 fun HomeScreen(modifier: Modifier = Modifier) {
+    var user=GlobalVariable.User
     val preventionList by remember {
         mutableStateOf(mutableListOf<String>())
     }
@@ -80,9 +82,9 @@ fun HomeScreen(modifier: Modifier = Modifier) {
                         verticalArrangement = Arrangement.spacedBy(10.dp, Alignment.Top),
                         horizontalAlignment = Alignment.Start,
                     ) {
-                        Text(text = "Aman Kumar", fontWeight = FontWeight.Medium)
-                        Text(text = "21", fontWeight = FontWeight.Medium)
-                        Text(text = "Male", fontWeight = FontWeight.Medium)
+                        Text(text = user.patientName, fontWeight = FontWeight.Medium)
+                        Text(text = user.age, fontWeight = FontWeight.Medium)
+                        Text(text = user.gender, fontWeight = FontWeight.Medium)
                         Text(text = "1DS21CS030", fontWeight = FontWeight.Medium)
                     }
                 }
