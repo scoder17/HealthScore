@@ -21,6 +21,7 @@ import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
+import com.example.healthscore.hospital.AddPatient
 import com.example.healthscore.hospital.DepartmentScreen
 import com.example.healthscore.hospital.DoctorScreen
 import com.example.healthscore.hospital.PatientScreen
@@ -59,6 +60,9 @@ fun App() {
         }
         composable("add_patient_screen"){
             PatientScreen(navController = navController)
+        }
+        composable("patient_update_screen"){
+            AddPatient(navController = navController)
         }
     }
 
@@ -112,11 +116,3 @@ fun WelcomeScreen(navController: NavHostController) {
 
     }
 }
-
-//@Preview(showBackground = true)
-//@Composable
-//fun WelcomeScreenPreview() {
-//    HealthScoreTheme {
-//        WelcomeScreen()
-//    }
-//}

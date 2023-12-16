@@ -65,7 +65,7 @@ fun PatientScreen(navController: NavHostController){
             Spacer(modifier = Modifier.padding(10.dp))
             Button(
                 modifier = Modifier.weight(0.4f).align(Alignment.CenterVertically),
-                onClick = { navController.navigate("") }
+                onClick = {  }
 
             ) {
                 Text(text = "Add")
@@ -75,7 +75,8 @@ fun PatientScreen(navController: NavHostController){
             items(patients){
                 PatientItem(
                     patient = it,
-                    modifier= Modifier.padding(8.dp)
+                    modifier= Modifier.padding(8.dp),
+                    navController=navController
                 )
             }
         }
@@ -85,12 +86,13 @@ fun PatientScreen(navController: NavHostController){
 @Composable
 fun PatientItem(
     patient: Patient,
-    modifier: Modifier = Modifier
+    modifier: Modifier = Modifier,
+    navController: NavHostController
 ){
 
     Card(modifier = modifier
         .fillMaxWidth()
-        .clickable { },
+        .clickable { navController.navigate("patient_update_screen")},
         elevation = CardDefaults.cardElevation(defaultElevation = 3.dp)
     ) {
         Column(
