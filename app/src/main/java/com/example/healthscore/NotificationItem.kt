@@ -3,6 +3,8 @@ package com.example.healthscore
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Home
 import androidx.compose.material.icons.filled.Medication
+import androidx.compose.material.icons.filled.MonitorHeart
+import androidx.compose.material.icons.filled.Newspaper
 import androidx.compose.material.icons.filled.Person
 import androidx.compose.ui.graphics.vector.ImageVector
 
@@ -18,20 +20,20 @@ sealed class NotificationItem (
     )
 
     object Medicine: NotificationItem(
-        route ="medicine",
-        title = "medicine",
-        icon = Icons.Filled.Home
+        route ="meds",
+        title = "meds",
+        icon = Icons.Filled.Medication
     )
 
     object Vitals: NotificationItem(
-        route ="home",
-        title = "home",
-        icon = Icons.Filled.Home
+        route ="vitals",
+        title = "vitals",
+        icon = Icons.Filled.MonitorHeart
     )
     object Aid: NotificationItem(
-        route = "vitals",
-        title = "vitals",
-        icon = Icons.Filled.Medication
+        route = "aid",
+        title = "aid",
+        icon = Icons.Filled.Newspaper
     )
     object Profile: NotificationItem(
         route = "profile",

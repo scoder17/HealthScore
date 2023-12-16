@@ -48,9 +48,8 @@ fun NavigationController(navController: NavHostController) {
         }
     }
 }
-
-@OptIn(ExperimentalMaterial3Api::class)
 @Preview
+@OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun Navigation(){
     val navController = rememberNavController()
