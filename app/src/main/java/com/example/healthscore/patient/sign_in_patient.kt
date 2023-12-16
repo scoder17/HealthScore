@@ -14,7 +14,6 @@ import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextButton
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
@@ -22,13 +21,11 @@ import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.text.input.TextFieldValue
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.lifecycle.viewmodel.compose.viewModel
 import com.example.compose.HealthScoreTheme
-import com.example.healthscore.data.PatientData
 import kotlinx.coroutines.launch
 
 
@@ -72,10 +69,10 @@ fun Sign_in_patient(patientDataViewModel: PatientDataViewModel = viewModel()) {
                     val res = getPatientDataFromFireBase(userEmail)
                 if(res.password==userPassword)
                 {
-                    Log.d(TAG, "Sign_in_patient: Sucess")
+                    Log.d(TAG, "Sign_in_patient: Success")
                 }
                 else
-                    Log.d(TAG, "Sign_in_patient: Errpr")
+                    Log.d(TAG, "Sign_in_patient: Error")
                 }
             },
             modifier = Modifier.size(180.dp, 50.dp)
