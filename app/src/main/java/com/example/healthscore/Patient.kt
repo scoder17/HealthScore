@@ -14,6 +14,7 @@ import androidx.compose.material.icons.outlined.Newspaper
 import androidx.compose.material.icons.outlined.Person
 import androidx.compose.material3.Badge
 import androidx.compose.material3.BadgedBox
+import androidx.compose.material3.BottomAppBar
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
@@ -30,18 +31,38 @@ import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.navigation.NavController
+import androidx.navigation.NavHostController
+import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
 import com.example.healthscore.data.BottomNavigationItem
+import com.example.healthscore.ui.theme.theme.BottomNavGraph
 
-
+@Composable
 fun MainScreen(){
     val navController = rememberNavController()
     Scaffold(
-        bottomBar = {}
+        bottomBar = { BottomBar(navController = navController) },
     ) {
-
+        BottomNavGraph(navController = navController)
     }
 }
+
+@Composable
+fun BottomBar(navController: NavHostController){
+    val screens = listOf(
+        BottomBarScreen.Home,
+        BottomBarScreen.Medicine,
+        BottomBarScreen.Vitals,
+        BottomBarScreen.Aid,
+        BottomBarScreen.Profile
+    )
+    val navBackStackEntry by navController.currentBackStackEntryAsState()
+    val currentDestination = navBackStackEntry?.destination
+    
+
+}
+
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Preview
