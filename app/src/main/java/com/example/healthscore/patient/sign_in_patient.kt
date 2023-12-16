@@ -21,17 +21,15 @@ import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import androidx.lifecycle.viewmodel.compose.viewModel
-import com.example.compose.HealthScoreTheme
+import androidx.navigation.NavHostController
 import com.example.healthscore.data.GlobalVariable
 import kotlinx.coroutines.launch
 
 
 @Composable
-fun Sign_in_patient(patientDataViewModel: PatientDataViewModel = viewModel()) {
+fun Sign_in_patient(navController: NavHostController) {
 
     val coroutineScope = rememberCoroutineScope()
     var userEmail by remember { mutableStateOf("") }
@@ -61,17 +59,20 @@ fun Sign_in_patient(patientDataViewModel: PatientDataViewModel = viewModel()) {
                 .fillMaxWidth()
                 .padding(10.dp)
         )
-        TextButton(modifier = Modifier.align(Alignment.Start), onClick = { /*TODO*/ }) {
-            Text(text = "Forgot your Password?")
+        TextButton(modifier = Modifier.align(Alignment.Start),
+            onClick = {navController.navigate("patient_sign_up")}) {
+            Text(text = "Create a new Account")
+
         }
         Button(
             onClick = {
                 coroutineScope.launch {
                     val res = getPatientDataFromFireBase(userEmail)
-                if(res.password==userPassword)
+                if(res.password==userPassword && !res.password.isEmpty())
                 {
                     Log.d(TAG, "Sign_in_patient: Success")
                     GlobalVariable.User=res
+                    navController.navigate("patient_home")
                 }
                 else
                     Log.d(TAG, "Sign_in_patient: Error")
@@ -85,11 +86,11 @@ fun Sign_in_patient(patientDataViewModel: PatientDataViewModel = viewModel()) {
     }
 }
 
-@Preview(showSystemUi = true, showBackground = true)
-@Composable
-fun SignInPreview() {
-    HealthScoreTheme {
-        Sign_in_patient()
-    }
-
-}
+//@Preview(showSystemUi = true, showBackground = true)
+//@Composable
+//fun SignInPreview() {
+//    HealthScoreTheme {
+//        Sign_in_patient()
+//    }
+//
+//}

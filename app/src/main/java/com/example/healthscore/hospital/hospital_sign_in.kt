@@ -18,13 +18,13 @@ import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.input.TextFieldValue
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.navigation.NavHostController
 
-@Preview(showBackground = true)
+
 @Composable
-fun Sign_in_hospital(){
+fun Sign_in_hospital(navController: NavHostController){
     val userName = remember { mutableStateOf(TextFieldValue()) }
     val userPassword = remember { mutableStateOf(TextFieldValue()) }
     Column(
@@ -52,11 +52,17 @@ fun Sign_in_hospital(){
                 .fillMaxWidth()
                 .padding(10.dp)
         )
-        TextButton(modifier = Modifier.align(Alignment.Start),onClick = { /*TODO*/ }) {
-            Text(text = "Forgot your Password?")
+        TextButton(modifier = Modifier.align(Alignment.Start),
+            onClick = {
+                navController.navigate("hospital_sign_up")
+            }
+        ) {
+            Text(text = "Register Yourself")
         }
         Button(
-            onClick = { /*TODO*/ },
+            onClick = {
+                      navController.navigate("")
+            },
             modifier = Modifier.size(180.dp,50.dp)
         ) {
             Text(text = "Sign In", fontSize = 18.sp)

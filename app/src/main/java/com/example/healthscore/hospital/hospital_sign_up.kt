@@ -25,14 +25,14 @@ import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.text.input.PasswordVisualTransformation
 import androidx.compose.ui.text.input.TextFieldValue
 import androidx.compose.ui.text.input.VisualTransformation
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.navigation.NavHostController
 import com.example.healthscore.R
 
-@Preview(showBackground = true, showSystemUi = true)
+//@Preview(showBackground = true, showSystemUi = true)
 @Composable
-fun Sign_up_hospital() {
+fun Sign_up_hospital(navController: NavHostController) {
     val focusManager = LocalFocusManager.current
     val hspMail = remember { mutableStateOf(TextFieldValue()) }
     val hspId = remember { mutableStateOf(TextFieldValue()) }
@@ -114,11 +114,16 @@ fun Sign_up_hospital() {
                 .fillMaxWidth()
                 .padding(10.dp)
         )
-        TextButton(modifier = Modifier.align(Alignment.Start), onClick = { /*TODO*/ }) {
+        TextButton(modifier = Modifier.align(Alignment.Start),
+            onClick = {
+                navController.navigate("hospital_sign_in")
+            }) {
             Text(text = "Already have an account?")
         }
         Button(
-            onClick = { /*TODO*/ },
+            onClick = {
+                      navController.navigate("hospital_sign_in")
+            },
             modifier = Modifier.size(180.dp, 50.dp)
         ) {
             Text(text = "Sign Up", fontSize = 18.sp)

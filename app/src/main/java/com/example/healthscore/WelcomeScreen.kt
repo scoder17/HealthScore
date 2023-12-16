@@ -22,24 +22,36 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import com.example.healthscore.hospital.Sign_in_hospital
+import com.example.healthscore.hospital.Sign_up_hospital
 import com.example.healthscore.patient.Sign_in_patient
+import com.example.healthscore.patient.Sign_up_patient
 
 @Composable
-fun App(){
-    val navController= rememberNavController()
-    NavHost(navController = navController, startDestination = "welcomeScreen"){
-        composable("welcomeScreen"){
-            WelcomeScreen(navController=navController)
+fun App() {
+    val navController = rememberNavController()
+    NavHost(navController = navController, startDestination = "welcomeScreen") {
+        composable("welcomeScreen") {
+            WelcomeScreen(navController = navController)
         }
-        composable("patient"){
-            Sign_in_patient()
+        composable("patient_sign_in") {
+            Sign_in_patient(navController=navController)
         }
-        composable("hospital"){
-            Sign_in_hospital()
+        composable("hospital_sign_in") {
+            Sign_in_hospital(navController=navController)
+        }
+        composable("patient_sign_up"){
+            Sign_up_patient(navController=navController)
+        }
+        composable("hospital_sign_up"){
+            Sign_up_hospital(navController=navController)
+        }
+        composable("patient_home"){
+            Navigation()
         }
     }
 
 }
+
 @Composable
 fun WelcomeScreen(navController: NavHostController) {
     var selectedOption by remember {
@@ -68,18 +80,20 @@ fun WelcomeScreen(navController: NavHostController) {
             Text(text = "Continue as a", style = MaterialTheme.typography.bodyLarge)
             Button(
                 onClick = {
-                          selectedOption="patient"
-                    navController.navigate("patient")
-                } ,
+                    selectedOption = "patient"
+                    navController.navigate("patient_sign_in")
+                },
                 modifier = Modifier.padding(16.dp))
             {
                 Text(text = "Patient")
             }
-            Button(onClick = {
-                selectedOption="hospital"
-                                navController.navigate("hospital")
-                                },
-                modifier = Modifier.padding(16.dp)) {
+            Button(
+                onClick = {
+                    selectedOption = "hospital"
+                    navController.navigate("hospital_sign_in")
+                },
+                modifier = Modifier.padding(16.dp)
+            ) {
                 Text(text = "Hospital")
             }
         }

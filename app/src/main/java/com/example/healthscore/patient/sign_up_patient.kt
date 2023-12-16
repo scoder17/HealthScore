@@ -3,19 +3,16 @@ package com.example.healthscore.patient
 import android.util.Log
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
-import androidx.compose.foundation.text.KeyboardActions
 import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Visibility
 import androidx.compose.material.icons.filled.VisibilityOff
 import androidx.compose.material3.Button
-import androidx.compose.material3.DropdownMenu
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.Text
@@ -32,25 +29,24 @@ import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.text.input.ImeAction
 import androidx.compose.ui.text.input.PasswordVisualTransformation
 import androidx.compose.ui.text.input.VisualTransformation
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import androidx.navigation.compose.rememberNavController
+import androidx.navigation.NavHostController
 import com.example.healthscore.R
 import com.example.healthscore.data.PatientData
 
-@Preview(showBackground = true, showSystemUi = true)
+
 @Composable
-fun Sign_up_patient() {
+fun Sign_up_patient(navController: NavHostController) {
     val focusManager = LocalFocusManager.current
-    val navController= rememberNavController ()
+//    val navController= rememberNavController ()
     var userMail by remember { mutableStateOf("") }
     var userName by remember { mutableStateOf("") }
     var iniPassword by remember { mutableStateOf("") }
     var cnfPassword by remember { mutableStateOf("") }
     var userGender by remember { mutableStateOf("") }
     var userAge by remember { mutableStateOf("") }
-    var showPassword by remember {
+    val showPassword by remember {
         mutableStateOf(false)
     }
     Column(
@@ -140,15 +136,18 @@ fun Sign_up_patient() {
         }
         Button(
             onClick = {
-                if (iniPassword == cnfPassword) {
+                if (iniPassword == cnfPassword && !iniPassword.isEmpty()) {
                     val patientData = PatientData(
                         userName, userMail, iniPassword, userAge, userGender,
                         mutableListOf(), mutableListOf()
+
                     )
                     addDataToFireBase(patientData)
+                    navController.navigate("patient_sign_in")
                 } else {
                     Log.d(TAG, "Sign_up_patient: Password Mismatched")
                 }
+
             },
             modifier = Modifier.size(180.dp, 50.dp)
         ) {
