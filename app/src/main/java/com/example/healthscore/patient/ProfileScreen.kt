@@ -37,6 +37,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.compose.HealthScoreTheme
 import com.example.healthscore.R
+import com.example.healthscore.data.GlobalVariable
 
 
 @Composable
@@ -55,11 +56,11 @@ fun ProfileScreen() {
             Column(modifier = Modifier.fillMaxWidth(), horizontalAlignment = Alignment.CenterHorizontally){
 
                 Text(
-                    "User's Name",
+                    GlobalVariable.User.patientName,
                     fontSize = 35.sp
                 )
                 Text(
-                    "email@gmail.com",
+                    GlobalVariable.User.email,
                     fontSize = 20.sp
                 )
             }

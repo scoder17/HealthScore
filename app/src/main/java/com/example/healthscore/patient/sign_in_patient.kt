@@ -70,6 +70,7 @@ fun Sign_in_patient(patientDataViewModel: PatientDataViewModel = viewModel()) {
                 if(res.password==userPassword)
                 {
                     Log.d(TAG, "Sign_in_patient: Success")
+                    GlobalVariable.User=res
                 }
                 else
                     Log.d(TAG, "Sign_in_patient: Error")

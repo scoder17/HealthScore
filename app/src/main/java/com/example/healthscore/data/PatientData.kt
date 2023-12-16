@@ -4,7 +4,10 @@ data class PatientData(
     var patientName:String="",
     var email:String="",
     var password:String="",
-    var medNotes:MutableList<String>,
+    var age:String="",
+    var gender:String="",
+    var medList:MutableList<String>,
+    var docNotes:MutableList<String>
 ){
-    constructor() : this("", "", "", mutableListOf())
+    constructor() : this("", "", "","","", mutableListOf(), mutableListOf())
 }
