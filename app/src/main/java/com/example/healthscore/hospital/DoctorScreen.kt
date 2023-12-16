@@ -27,17 +27,16 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavHostController
-import com.example.healthscore.data.Department
-import com.example.healthscore.data.departments
-
+import com.example.healthscore.data.Doctor
+import com.example.healthscore.data.doctors
 
 //@Preview(showSystemUi = true)
 @Composable
-fun DepartmentScreen(navController: NavHostController){
-    var departmentName by remember {
+fun DoctorScreen(navController: NavHostController){
+    var doctorName by remember {
         mutableStateOf("")
     }
-    var departmentId by remember {
+    var doctorId by remember {
         mutableStateOf("")
     }
     Column (
@@ -47,9 +46,9 @@ fun DepartmentScreen(navController: NavHostController){
         horizontalAlignment = Alignment.CenterHorizontally
     ){
         OutlinedTextField(
-            value = departmentName,
-            onValueChange = {departmentName = it},
-            label = { Text(text = "Department name") },
+            value = doctorName,
+            onValueChange = {doctorName = it},
+            label = { Text(text = "Doctor name") },
             modifier= Modifier.fillMaxWidth()
         )
         Row(
@@ -58,24 +57,24 @@ fun DepartmentScreen(navController: NavHostController){
             verticalAlignment = Alignment.CenterVertically,
             horizontalArrangement = Arrangement.Center) {
             OutlinedTextField(
-                value = departmentId,
-                onValueChange = {departmentId = it},
-                label = { Text(text = "Department Id") },
+                value = doctorId,
+                onValueChange = {doctorId = it},
+                label = { Text(text = "Doctor Id") },
                 modifier= Modifier.weight(0.6f)
             )
             Spacer(modifier = Modifier.padding(10.dp))
             Button(
                 modifier = Modifier.weight(0.4f).align(Alignment.CenterVertically),
-                onClick = {  }
+                onClick = { navController.navigate("add_patient_screen") }
 
             ) {
                 Text(text = "Add")
             }
         }
         LazyColumn(Modifier.padding(top = 30.dp)){
-            items(departments){
-                DepartmentItem(
-                    department = it,
+            items(doctors){
+                DoctorItem(
+                    doctor = it,
                     modifier= Modifier.padding(8.dp),
                     navController=navController
                 )
@@ -85,15 +84,15 @@ fun DepartmentScreen(navController: NavHostController){
 
 }
 @Composable
-fun DepartmentItem(
-    department: Department,
-    modifier:Modifier=Modifier,
+fun DoctorItem(
+    doctor: Doctor,
+    modifier: Modifier = Modifier,
     navController: NavHostController
 ){
 
     Card(modifier = modifier
         .fillMaxWidth()
-        .clickable { navController.navigate("doctor_screen")},
+        .clickable { navController.navigate("add_patient_screen")},
         elevation = CardDefaults.cardElevation(defaultElevation = 3.dp)
     ) {
         Column(
@@ -105,11 +104,11 @@ fun DepartmentItem(
                     )
                 )
                 .padding(16.dp),
-            horizontalAlignment = Alignment.CenterHorizontally,
+            horizontalAlignment = Alignment.Start,
             verticalArrangement = Arrangement.Center
         )
         {
-                Text(text =department.deptName, style = MaterialTheme.typography.titleMedium)
+                Text(text =doctor.doctorName, style = MaterialTheme.typography.titleMedium)
         }
     }
 }

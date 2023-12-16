@@ -7,21 +7,4 @@ data class Department (
 
 val departments = mutableListOf(
     Department("Radiology",10),
-    Department("Radiology",10),
-    Department("Radiology",10),
-    Department("Radiology",10),
-    Department("Radiology",10),
-    Department("Radiology",10),
-    Department("Radiology",10),
-    Department("Radiology",10),
-    Department("Radiology",10),
-    Department("Radiology",10),
-    Department("Radiology",10),
-    Department("Radiology",10),
-    Department("Radiology",10),
-    Department("Radiology",10),
-    Department("Radiology",10),
-    Department("Radiology",10),
-    Department("Radiology",10),
-    Department("Radiology",10),
 )
