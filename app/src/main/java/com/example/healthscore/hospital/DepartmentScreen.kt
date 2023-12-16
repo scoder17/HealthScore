@@ -39,28 +39,34 @@ fun DepartmentScreen(){
     var doctorId by remember {
         mutableStateOf("")
     }
-    Row(Modifier.fillMaxWidth().padding(16.dp),verticalAlignment = Alignment.CenterVertically, horizontalArrangement = Arrangement.SpaceBetween) {
-        OutlinedTextField(
-            value = doctorName,
-            onValueChange = {doctorName = it},
-            label = {Text(text = "Doctor name")},
-            modifier=Modifier.width(200.dp)
-        )
-        Button(
-            onClick = { /*TODO*/ }
-
-        ) {
-            Text(text = "Add")
-        }
-    }
-    LazyColumn(Modifier.padding(top = 65.dp, bottom = 65.dp)){
-        items(departments){
-            DepartmentItem(
-                department = it,
-                modifier=Modifier.padding(8.dp)
+    Column {
+        Row(
+            Modifier
+                .fillMaxWidth()
+                .padding(16.dp),verticalAlignment = Alignment.CenterVertically, horizontalArrangement = Arrangement.SpaceBetween) {
+            OutlinedTextField(
+                value = doctorName,
+                onValueChange = {doctorName = it},
+                label = {Text(text = "Doctor name")},
+                modifier=Modifier.width(270.dp)
             )
+            Button(
+                onClick = { /*TODO*/ }
+
+            ) {
+                Text(text = "Add")
+            }
+        }
+        LazyColumn(){
+            items(departments){
+                DepartmentItem(
+                    department = it,
+                    modifier=Modifier.padding(8.dp)
+                )
+            }
         }
     }
+
 }
 @Composable
 fun DepartmentItem(
@@ -68,7 +74,9 @@ fun DepartmentItem(
     modifier:Modifier=Modifier
 ){
 
-    Card(modifier = modifier.fillMaxWidth().padding(start = 16.dp, end = 16.dp), elevation = CardDefaults.cardElevation(defaultElevation = 3.dp)) {
+    Card(modifier = modifier
+        .fillMaxWidth()
+        .padding(start = 16.dp, end = 16.dp), elevation = CardDefaults.cardElevation(defaultElevation = 3.dp)) {
         Column(
             modifier = Modifier
                 .animateContentSize(
