@@ -15,29 +15,29 @@ sealed class NotificationItem (
 ){
     object Home: NotificationItem(
         route ="home",
-        title = "home",
+        title = "Home",
         icon = Icons.Filled.Home
     )
 
     object Medicine: NotificationItem(
         route ="meds",
-        title = "meds",
+        title = "Meds",
         icon = Icons.Filled.Medication
     )
 
     object Vitals: NotificationItem(
         route ="vitals",
-        title = "vitals",
+        title = "Vitals",
         icon = Icons.Filled.MonitorHeart
     )
     object Aid: NotificationItem(
         route = "aid",
-        title = "aid",
+        title = "Aid",
         icon = Icons.Filled.Newspaper
     )
     object Profile: NotificationItem(
         route = "profile",
-        title = "profile",
+        title = "Profile",
         icon = Icons.Filled.Person
     )
 }

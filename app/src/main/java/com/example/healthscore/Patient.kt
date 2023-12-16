@@ -1,6 +1,7 @@
 package com.example.healthscore
 
 import androidx.compose.foundation.Image
+import androidx.compose.foundation.layout.safeContentPadding
 import androidx.compose.material.BottomNavigation
 import androidx.compose.material.BottomNavigationItem
 import androidx.compose.material3.ExperimentalMaterial3Api
@@ -12,6 +13,7 @@ import androidx.compose.material3.TopAppBar
 import androidx.compose.material3.TopAppBarDefaults
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
+import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
@@ -62,6 +64,7 @@ fun Navigation(){
     )
 
     Scaffold(
+        modifier=Modifier.safeContentPadding(),
         topBar = {
             TopAppBar(
                 colors = TopAppBarDefaults.topAppBarColors(
@@ -109,8 +112,9 @@ fun Navigation(){
                 }
             }
         }
-    ) {
+    ) {it->
         NavigationController(navController = navController)
+
     }
 }
 
