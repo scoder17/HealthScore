@@ -8,6 +8,7 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
 import androidx.compose.ui.Modifier
 import com.example.compose.HealthScoreTheme
+import com.example.healthscore.patient.VitalsScreen
 
 
 class MainActivity : ComponentActivity() {
@@ -20,7 +21,8 @@ class MainActivity : ComponentActivity() {
                     modifier = Modifier.fillMaxSize(),
                     color = MaterialTheme.colorScheme.background
                 ) {
-                    App()
+//                    App()
+                    VitalsScreen()
                 }
             }
         }

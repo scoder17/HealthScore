@@ -13,37 +13,37 @@ object VitalsData{
             value="100",
             unit="mg",
             icon=Icons.Outlined.Bloodtype,
-            vital="Blood Type"
+            name="Blood Type"
         ),
         VitalData(
             value="100",
             unit="mg",
             icon=Icons.Outlined.MonitorWeight,
-            vital="Blood Type"
+            name="Blood Type"
         ),
         VitalData(
             value="100",
             unit="mg",
             icon=Icons.Outlined.Height,
-            vital="Blood Type"
+            name="Blood Type"
         ),
         VitalData(
             value="100",
             unit="mg",
             icon=Icons.Outlined.MonitorHeart,
-            vital="Blood Type"
+            name="Blood Type"
         ),
         VitalData(
             value="100",
             unit="mg",
             icon=Icons.Outlined.VolunteerActivism,
-            vital="Blood Type"
+            name="Blood Type"
         ),
         VitalData(
             value="100",
             unit="mg",
             icon=Icons.Outlined.VolunteerActivism,
-            vital="Blood Type"
+            name="Blood Type"
         ),
     )
 }
