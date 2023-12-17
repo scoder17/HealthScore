@@ -50,7 +50,6 @@ fun HomeScreen(modifier: Modifier = Modifier) {
     }
     LaunchedEffect(Unit ){
         doctorNotes= getAllDocNotesDataFromFireBase()
-        medicine= getAllMedicineDataFromFireBase()
     }
     Column(
         modifier = Modifier
@@ -206,8 +205,8 @@ fun HomeScreen(modifier: Modifier = Modifier) {
 
                 Column(modifier = Modifier.verticalScroll(rememberScrollState())) {
                     Text(text = "Prevention")
-                   repeat(doctorNotes.size){
-                        Text(text =doctorNotes[it].docNotes )
+                   repeat(GlobalVariable.User.docNotes.size){
+                        Text(text =GlobalVariable.User.docNotes[it] )
                     }
                 }
             }

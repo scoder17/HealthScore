@@ -71,11 +71,12 @@ suspend fun getAllMedicineDataFromFireBase(): MutableList<Medicine> {
 
     return medicineList
 }
+
 suspend fun getAllDocNotesDataFromFireBase(): MutableList<DocNotes> {
     val docNotesList = mutableListOf<DocNotes>()
 
     try {
-        val querySnapshot = db.collection("docNotes")
+        val querySnapshot = db.collection("docNotes").whereEqualTo("patientId", "admin")
             .get()
             .await()
 
@@ -85,7 +86,7 @@ suspend fun getAllDocNotesDataFromFireBase(): MutableList<DocNotes> {
                 docNotesList.add(docnote)
             }
         }
-
+        Log.d(TAG, "getAllDocNotesDataFromFireBase: $docNotesList")
     } catch (exception: Exception) {
         // Handle the exception (e.g., log an error, show an error message)
         Log.e(TAG, "Error getting department data: $exception")

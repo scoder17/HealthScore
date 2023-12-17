@@ -28,6 +28,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.compose.HealthScoreTheme
 import com.example.healthscore.data.DocNotes
+import com.example.healthscore.data.GlobalVariable
 import com.example.healthscore.data.Medicine
 
 @Composable
@@ -60,7 +61,7 @@ fun MedicineScreen() {
             )
             Spacer(modifier = Modifier.padding(10.dp))
 
-            if (medicine.isEmpty()) {
+            if (GlobalVariable.User.medList.isEmpty()) {
                 Text(
                     text = "No Medications has been assigned to you by the doctor!",
                     textAlign = TextAlign.Center,
@@ -69,9 +70,9 @@ fun MedicineScreen() {
                     fontSize = 20.sp
                 )
             } else {
-                repeat(medicine.size) {
+                repeat(GlobalVariable.User.medList.size) {
                     Text(
-                        text = medicine[it].medicine, textAlign = TextAlign.Center,
+                        text =GlobalVariable.User.medList[it], textAlign = TextAlign.Center,
                         modifier = Modifier.padding(8.dp),
                         fontSize = 20.sp
                     )
