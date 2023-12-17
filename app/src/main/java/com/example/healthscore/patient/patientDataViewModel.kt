@@ -5,7 +5,11 @@ import android.util.Log
 import androidx.compose.runtime.mutableStateOf
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.example.healthscore.data.DocNotes
+import com.example.healthscore.data.Doctor
+import com.example.healthscore.data.Medicine
 import com.example.healthscore.data.PatientData
+import com.example.healthscore.hospital.db
 import com.google.firebase.Firebase
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.FirebaseFirestoreException
@@ -43,6 +47,51 @@ suspend fun getPatientDataFromFireBase(email: String): PatientData {
     }
 
     return patientData
+}
+
+suspend fun getAllMedicineDataFromFireBase(): MutableList<Medicine> {
+    val medicineList = mutableListOf<Medicine>()
+
+    try {
+        val querySnapshot = db.collection("medicine")
+            .get()
+            .await()
+
+        for (document in querySnapshot.documents) {
+            val medicine = document.toObject(Medicine::class.java)
+            if (medicine != null) {
+                medicineList.add(medicine)
+            }
+        }
+
+    } catch (exception: Exception) {
+        // Handle the exception (e.g., log an error, show an error message)
+        Log.e(TAG, "Error getting department data: $exception")
+    }
+
+    return medicineList
+}
+suspend fun getAllDocNotesDataFromFireBase(): MutableList<DocNotes> {
+    val docNotesList = mutableListOf<DocNotes>()
+
+    try {
+        val querySnapshot = db.collection("docNotes")
+            .get()
+            .await()
+
+        for (document in querySnapshot.documents) {
+            val docnote = document.toObject(DocNotes::class.java)
+            if (docnote != null) {
+                docNotesList.add(docnote)
+            }
+        }
+
+    } catch (exception: Exception) {
+        // Handle the exception (e.g., log an error, show an error message)
+        Log.e(TAG, "Error getting department data: $exception")
+    }
+
+    return docNotesList
 }
 
 fun addDataToFireBase(patientData: PatientData) {

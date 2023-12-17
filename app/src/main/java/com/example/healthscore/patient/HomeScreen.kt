@@ -20,9 +20,11 @@ import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
@@ -32,14 +34,23 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import com.example.healthscore.data.DocNotes
 import com.example.healthscore.data.GlobalVariable
+import com.example.healthscore.data.Medicine
 
 @Preview(showBackground = true, showSystemUi = true)
 @Composable
 fun HomeScreen(modifier: Modifier = Modifier) {
     var user=GlobalVariable.User
-    val preventionList by remember {
-        mutableStateOf(mutableListOf<String>())
+    var medicine by remember {
+        mutableStateOf(mutableListOf<Medicine>())
+    }
+    var doctorNotes by remember {
+        mutableStateOf(mutableListOf<DocNotes>())
+    }
+    LaunchedEffect(Unit ){
+        doctorNotes= getAllDocNotesDataFromFireBase()
+        medicine= getAllMedicineDataFromFireBase()
     }
     Column(
         modifier = Modifier
@@ -56,7 +67,8 @@ fun HomeScreen(modifier: Modifier = Modifier) {
                 .padding(16.dp), elevation = CardDefaults.cardElevation(defaultElevation = 3.dp)
         ) {
             Row(
-                modifier = modifier.fillMaxWidth()
+                modifier = modifier
+                    .fillMaxWidth()
                     .background(color = Color(0xFF63BDC3), shape = RoundedCornerShape(size = 10.dp)),
                 verticalAlignment = Alignment.CenterVertically,
                 horizontalArrangement = Arrangement.SpaceBetween
@@ -194,6 +206,9 @@ fun HomeScreen(modifier: Modifier = Modifier) {
 
                 Column(modifier = Modifier.verticalScroll(rememberScrollState())) {
                     Text(text = "Prevention")
+                   repeat(doctorNotes.size){
+                        Text(text =doctorNotes[it].docNotes )
+                    }
                 }
             }
         }

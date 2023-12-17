@@ -128,7 +128,9 @@ fun DoctorItem(
     Card(
         modifier = modifier
             .fillMaxWidth()
-            .clickable { navController.navigate("add_patient_screen") },
+            .clickable {
+                GlobalVariable.doctor=doctor
+                navController.navigate("add_patient_screen") },
         elevation = CardDefaults.cardElevation(defaultElevation = 3.dp)
     ) {
         Column(

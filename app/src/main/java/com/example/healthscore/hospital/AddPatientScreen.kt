@@ -20,6 +20,9 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavHostController
+import com.example.healthscore.data.DocNotes
+import com.example.healthscore.data.GlobalVariable
+import com.example.healthscore.data.Medicine
 
 //@Preview(showSystemUi = true)
 @Composable
@@ -30,9 +33,6 @@ fun AddPatient(navController: NavHostController){
     var doctorNotes by remember {
         mutableStateOf("")
     }
-//    var vitals by remember {
-//        mutableStateOf("")
-//    }
     Column(Modifier.padding(16.dp), horizontalAlignment = Alignment.CenterHorizontally, verticalArrangement = Arrangement.Center) {
         Row(
             Modifier
@@ -41,8 +41,8 @@ fun AddPatient(navController: NavHostController){
             horizontalArrangement = Arrangement.SpaceBetween,
             verticalAlignment = Alignment.CenterVertically
         ) {
-            Text(text = "Patient Name")
-            Text(text = "Patient ID")
+            Text(text = "Name-${GlobalVariable.patient.patientName}")
+            Text(text = "ID-${GlobalVariable.patient.patientId}")
         }
         OutlinedTextField(
             modifier = Modifier.fillMaxWidth(),
@@ -61,7 +61,10 @@ fun AddPatient(navController: NavHostController){
         )
         Button(
             modifier = Modifier.width(200.dp).padding(top=10.dp),
-            onClick = { navController.navigate("add_patient_screen") },
+            onClick = {
+                addMedicinesToFireBase(Medicine(medicine,GlobalVariable.patient.patientId))
+                addDoctorNotesToFireBase(DocNotes(doctorNotes,GlobalVariable.patient.patientId))
+                navController.navigate("add_patient_screen") },
 
         ) {
             Text(text = "Submit")
