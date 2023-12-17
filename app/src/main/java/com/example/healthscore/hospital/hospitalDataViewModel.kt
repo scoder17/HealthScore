@@ -2,21 +2,24 @@ package com.example.healthscore.hospital
 
 import android.util.Log
 import androidx.lifecycle.ViewModel
+import com.example.healthscore.data.Department
 import com.example.healthscore.data.HospitalData
 import com.example.healthscore.data.PatientData
 import com.example.healthscore.patient.TAG
 import com.example.healthscore.patient.err
 import com.google.firebase.Firebase
 import com.google.firebase.firestore.FirebaseFirestore
+import com.google.firebase.firestore.SetOptions
 import com.google.firebase.firestore.firestore
 import kotlinx.coroutines.tasks.await
 
-class hospitalDataViewModel:ViewModel() {
+class hospitalDataViewModel : ViewModel() {
 }
 
+val db = Firebase.firestore
 suspend fun getHospitalDataFromFireBase(email: String): HospitalData {
-    val db = FirebaseFirestore.getInstance()
-    var hospitalData=HospitalData()
+
+    var hospitalData = HospitalData()
     db.collection("hospital").whereEqualTo("hospitalEmail", email).get().await().map {
 
         val result = it.toObject(HospitalData::class.java)
@@ -25,9 +28,10 @@ suspend fun getHospitalDataFromFireBase(email: String): HospitalData {
     return hospitalData
 }
 
-fun addHospitalDataToFireBase(hospitalData: HospitalData) {
-    val db = Firebase.firestore
 
+
+
+fun addHospitalDataToFireBase(hospitalData: HospitalData) {
     db.collection("hospital")
         .add(hospitalData)
         .addOnSuccessListener { documentReference ->
@@ -36,4 +40,39 @@ fun addHospitalDataToFireBase(hospitalData: HospitalData) {
         .addOnFailureListener { e ->
             Log.w(err, "Error adding document", e)
         }
+}
+
+fun addDepartmentDataToFireBase(department: Department) {
+    db.collection("department")
+        .add(department)
+        .addOnSuccessListener { documentReference ->
+            Log.d(TAG, "DocumentSnapshot added with ID: ${documentReference.id}")
+        }
+        .addOnFailureListener { e ->
+            Log.w(err, "Error adding document", e)
+        }
+}
+
+suspend fun getAllDepartmentDataFromFireBase(hospitalId: String): MutableList<Department> {
+    val departmentsList = mutableListOf<Department>()
+
+    try {
+        val querySnapshot = db.collection("department")
+            .whereEqualTo("hospitalId", hospitalId)
+            .get()
+            .await()
+
+        for (document in querySnapshot.documents) {
+            val department = document.toObject(Department::class.java)
+            if (department != null) {
+                departmentsList.add(department)
+            }
+        }
+        Log.d(TAG, "getAllDepartmentDataFromFireBase: $departmentsList")
+    } catch (exception: Exception) {
+        // Handle the exception (e.g., log an error, show an error message)
+        Log.e(TAG, "Error getting department data: $exception")
+    }
+
+    return departmentsList
 }

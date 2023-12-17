@@ -5,7 +5,7 @@ data class HospitalData(
     var hospitalId:String="",
     var hospitalEmail:String="",
     var password:String="",
-    var doctorId:MutableList<String>
+    var departmentId:MutableList<String>
 ){
     constructor() : this("", "","","", mutableListOf() )
 
