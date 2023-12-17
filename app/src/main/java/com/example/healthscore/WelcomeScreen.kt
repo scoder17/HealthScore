@@ -3,12 +3,17 @@ package com.example.healthscore
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.width
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.LocalHospital
+import androidx.compose.material.icons.filled.Person
 import androidx.compose.material3.Button
+import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -44,30 +49,30 @@ fun App() {
             WelcomeScreen(navController = navController)
         }
         composable("patient_sign_in") {
-            Sign_in_patient(navController=navController)
+            Sign_in_patient(navController = navController)
         }
         composable("hospital_sign_in") {
-            Sign_in_hospital(navController=navController)
+            Sign_in_hospital(navController = navController)
         }
-        composable("patient_sign_up"){
-            Sign_up_patient(navController=navController)
+        composable("patient_sign_up") {
+            Sign_up_patient(navController = navController)
         }
-        composable("hospital_sign_up"){
-            Sign_up_hospital(navController=navController)
+        composable("hospital_sign_up") {
+            Sign_up_hospital(navController = navController)
         }
-        composable("patient_home"){
+        composable("patient_home") {
             Navigation()
         }
-        composable("department_screen"){
-            DepartmentScreen(navController=navController)
+        composable("department_screen") {
+            DepartmentScreen(navController = navController)
         }
-        composable("doctor_screen"){
-            DoctorScreen(navController=navController)
+        composable("doctor_screen") {
+            DoctorScreen(navController = navController)
         }
-        composable("add_patient_screen"){
+        composable("add_patient_screen") {
             PatientScreen(navController = navController)
         }
-        composable("patient_update_screen"){
+        composable("patient_update_screen") {
             AddPatient(navController = navController)
         }
     }
@@ -99,27 +104,42 @@ fun WelcomeScreen(navController: NavHostController) {
             verticalArrangement = Arrangement.Center,
             horizontalAlignment = Alignment.CenterHorizontally
         ) {
-            Text(text = "Continue as a",
-                fontSize = 20.sp,
+            Text(
+                text = "Continue as a",
+                fontSize = 25.sp,
                 fontWeight = FontWeight.Bold,
-                style = MaterialTheme.typography.bodyLarge)
+                style = MaterialTheme.typography.bodyLarge
+            )
             Button(
                 onClick = {
                     selectedOption = "patient"
                     navController.navigate("patient_sign_in")
                 },
-                modifier = Modifier.padding(top=16.dp).width(150.dp))
+                modifier = Modifier
+                    .padding(top = 16.dp)
+                    .width(170.dp)
+            )
             {
-                Text(text = "Patient")
+                Row(modifier = Modifier.fillMaxWidth().padding(10.dp), verticalAlignment = Alignment.CenterVertically, horizontalArrangement = Arrangement.SpaceAround) {
+                    Icon(imageVector = Icons.Filled.Person, contentDescription = "")
+                    Text(text = "Patient", fontSize = 18.sp)
+
+                }
             }
             Button(
                 onClick = {
                     selectedOption = "hospital"
                     navController.navigate("hospital_sign_in")
                 },
-                modifier = Modifier.padding(top = 16.dp).width(150.dp)
+                modifier = Modifier
+                    .padding(top = 16.dp)
+                    .width(170.dp)
             ) {
-                Text(text = "Hospital")
+                Row(modifier = Modifier.fillMaxWidth().padding(10.dp), verticalAlignment = Alignment.CenterVertically, horizontalArrangement = Arrangement.SpaceAround) {
+                    Icon(imageVector = Icons.Filled.LocalHospital, contentDescription = "")
+                    Text(text = "Hospital", fontSize = 18.sp)
+
+                }
             }
         }
 

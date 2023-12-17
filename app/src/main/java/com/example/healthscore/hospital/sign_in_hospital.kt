@@ -1,13 +1,16 @@
 package com.example.healthscore.hospital
 
 import android.util.Log
+import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.layout.width
 import androidx.compose.material3.Button
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.OutlinedTextField
@@ -21,15 +24,15 @@ import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.text.input.TextFieldValue
+import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavHostController
 import com.example.compose.HealthScoreTheme
+import com.example.healthscore.R
 import com.example.healthscore.data.GlobalVariable
 import com.example.healthscore.patient.TAG
-import com.example.healthscore.patient.getPatientDataFromFireBase
 import kotlinx.coroutines.launch
 
 
@@ -45,6 +48,8 @@ fun Sign_in_hospital(navController: NavHostController) {
         verticalArrangement = Arrangement.Center,
         horizontalAlignment = Alignment.CenterHorizontally,
     ) {
+        Image(painter = painterResource(id = R.drawable.healthscore_logo), contentDescription = "",Modifier.height(120.dp).width(120.dp))
+        Spacer(modifier = Modifier.padding(10.dp))
         Text(text = "Hospital Sign in", style = MaterialTheme.typography.headlineMedium)
         Spacer(modifier = Modifier.padding(30.dp))
         OutlinedTextField(value = hospitalEmail,
