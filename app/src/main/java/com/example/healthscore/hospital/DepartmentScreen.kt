@@ -47,9 +47,9 @@ fun DepartmentScreen(navController: NavHostController) {
     var departments by remember {
         mutableStateOf(mutableListOf<Department>())
     }
-    LaunchedEffect(Unit){
+    LaunchedEffect(Unit) {
         Log.d("Error", "DepartmentScreen: ${GlobalVariable.hospital.hospitalId}")
-        departments=getAllDepartmentDataFromFireBase(GlobalVariable.hospital.hospitalId)
+        departments = getAllDepartmentDataFromFireBase(GlobalVariable.hospital.hospitalId)
     }
     var departmentId by remember {
         mutableStateOf("")
@@ -85,14 +85,21 @@ fun DepartmentScreen(navController: NavHostController) {
                     .align(Alignment.CenterVertically),
                 onClick = {
                     departments.add(
-                        Department(departmentName, departmentId,GlobalVariable.hospital.hospitalId)
+                        Department(departmentName, departmentId, GlobalVariable.hospital.hospitalId)
                     )
-                    departmentIds.add(departmentId)
+
                     coroutineScope.launch {
-                        addDepartmentDataToFireBase(Department(departmentName,departmentId,GlobalVariable.hospital.hospitalId))
+                        addDepartmentDataToFireBase(
+                            Department(
+                                departmentName,
+                                departmentId,
+                                GlobalVariable.hospital.hospitalId
+                            )
+                        )
+                        departmentName=""
+                        departmentId=""
                     }
-                    departmentId=""
-                    departmentName=""
+
                 }
 
             ) {
@@ -122,7 +129,10 @@ fun DepartmentItem(
     Card(
         modifier = modifier
             .fillMaxWidth()
-            .clickable { navController.navigate("doctor_screen") },
+            .clickable {
+                GlobalVariable.department = department
+                navController.navigate("doctor_screen")
+            },
         elevation = CardDefaults.cardElevation(defaultElevation = 3.dp)
     ) {
         Column(
