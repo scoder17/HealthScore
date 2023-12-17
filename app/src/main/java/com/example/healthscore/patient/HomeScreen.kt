@@ -2,6 +2,7 @@ package com.example.healthscore.patient
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
+import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -55,7 +56,8 @@ fun HomeScreen(modifier: Modifier = Modifier) {
                 .padding(16.dp), elevation = CardDefaults.cardElevation(defaultElevation = 3.dp)
         ) {
             Row(
-                modifier = modifier.fillMaxWidth(),
+                modifier = modifier.fillMaxWidth()
+                    .background(color = Color(0xFF63BDC3), shape = RoundedCornerShape(size = 10.dp)),
                 verticalAlignment = Alignment.CenterVertically,
                 horizontalArrangement = Arrangement.SpaceBetween
             )
@@ -72,20 +74,20 @@ fun HomeScreen(modifier: Modifier = Modifier) {
                         horizontalAlignment = Alignment.Start,
                         verticalArrangement = Arrangement.spacedBy(10.dp, Alignment.Top)
                     ) {
-                        Text(text = "Name", fontWeight = FontWeight.Bold)
-                        Text(text = "Age", fontWeight = FontWeight.Bold)
-                        Text(text = "Gender", fontWeight = FontWeight.Bold)
-                        Text(text = "UID", fontWeight = FontWeight.Bold)
+                        Text(text = "Name", fontWeight = FontWeight.Bold, color = Color.Black)
+                        Text(text = "Age", fontWeight = FontWeight.Bold, color = Color.Black)
+                        Text(text = "Gender", fontWeight = FontWeight.Bold, color = Color.Black)
+                        Text(text = "UID", fontWeight = FontWeight.Bold, color = Color.Black)
                     }
                     Column(
                         modifier.padding(10.dp),
                         verticalArrangement = Arrangement.spacedBy(10.dp, Alignment.Top),
                         horizontalAlignment = Alignment.Start,
                     ) {
-                        Text(text = user.patientName, fontWeight = FontWeight.Medium)
-                        Text(text = user.age, fontWeight = FontWeight.Medium)
-                        Text(text = user.gender, fontWeight = FontWeight.Medium)
-                        Text(text = "1DS21CS030", fontWeight = FontWeight.Medium)
+                        Text(text = user.patientName, fontWeight = FontWeight.Medium, color = Color.Black)
+                        Text(text = user.age, fontWeight = FontWeight.Medium, color = Color.Black)
+                        Text(text = user.gender, fontWeight = FontWeight.Medium, color = Color.Black)
+                        Text(text = "ABHA XXXX", fontWeight = FontWeight.Medium, color = Color.Black)
                     }
                 }
                 Image(
@@ -115,9 +117,10 @@ fun HomeScreen(modifier: Modifier = Modifier) {
         Card(
             modifier = modifier
                 .fillMaxWidth()
-                .padding(16.dp), elevation = CardDefaults.cardElevation(defaultElevation = 3.dp)
+                .padding(16.dp)
+            , elevation = CardDefaults.cardElevation(defaultElevation = 3.dp)
         ) {
-            Column() {
+            Column(modifier.background(color = Color(0xFF63BDC3), shape = RoundedCornerShape(size = 10.dp))) {
                 Text(
                     text = "ACTIVE", color = Color.White,
                     modifier = Modifier
@@ -127,7 +130,8 @@ fun HomeScreen(modifier: Modifier = Modifier) {
                         .padding(5.dp)
                         .align(Alignment.End),
                     fontSize = 12.sp,
-                    style = MaterialTheme.typography.labelMedium
+                    style = MaterialTheme.typography.labelMedium,
+
                 )
                 Row(
                     modifier = modifier.fillMaxWidth(),
@@ -147,20 +151,20 @@ fun HomeScreen(modifier: Modifier = Modifier) {
                             horizontalAlignment = Alignment.Start,
                             verticalArrangement = Arrangement.spacedBy(10.dp, Alignment.Top)
                         ) {
-                            Text(text = "Hospital ID", fontWeight = FontWeight.Bold)
-                            Text(text = "Hospital Name", fontWeight = FontWeight.Bold)
-                            Text(text = "Doctor", fontWeight = FontWeight.Bold)
-                            Text(text = "Symptoms", fontWeight = FontWeight.Bold)
+                            Text(text = "Hospital ID", fontWeight = FontWeight.Bold, color = Color.Black)
+                            Text(text = "Hospital Name", fontWeight = FontWeight.Bold, color = Color.Black)
+                            Text(text = "Doctor", fontWeight = FontWeight.Bold, color = Color.Black)
+                            Text(text = "Symptoms", fontWeight = FontWeight.Bold, color = Color.Black)
                         }
                         Column(
                             modifier.padding(10.dp),
                             verticalArrangement = Arrangement.spacedBy(10.dp, Alignment.Top),
                             horizontalAlignment = Alignment.Start,
                         ) {
-                            Text(text = "HSP0123", fontWeight = FontWeight.Medium)
-                            Text(text = "Sagar Hospital", fontWeight = FontWeight.Medium)
-                            Text(text = "Dr. Adarsh", fontWeight = FontWeight.Medium)
-                            Text(text = "Cold", fontWeight = FontWeight.Medium)
+                            Text(text = "HSP0123", fontWeight = FontWeight.Medium, color = Color.Black)
+                            Text(text = "Sagar Hospital", fontWeight = FontWeight.Medium, color = Color.Black)
+                            Text(text = "Dr. Adarsh", fontWeight = FontWeight.Medium, color = Color.Black)
+                            Text(text = "Cold", fontWeight = FontWeight.Medium, color = Color.Black)
                         }
                     }
                 }
@@ -179,7 +183,9 @@ fun HomeScreen(modifier: Modifier = Modifier) {
         Card(
             modifier = modifier
                 .fillMaxWidth()
-                .padding(16.dp), elevation = CardDefaults.cardElevation(defaultElevation = 3.dp)
+                .padding(16.dp)
+                .border(width = 1.dp, color = Color(0xFF000000), shape = RoundedCornerShape(10.dp)),
+            elevation = CardDefaults.cardElevation(defaultElevation = 3.dp)
         ) {
             Column(
                 modifier = Modifier

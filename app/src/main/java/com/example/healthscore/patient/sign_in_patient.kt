@@ -47,6 +47,7 @@ fun Sign_in_patient(navController: NavHostController) {
             value = userEmail,
             onValueChange = { userEmail = it },
             label = { Text(text = "Patient Email") },
+            singleLine = true,
             modifier = Modifier
                 .fillMaxWidth()
                 .padding(10.dp)
@@ -55,6 +56,7 @@ fun Sign_in_patient(navController: NavHostController) {
             value = userPassword,
             onValueChange = { userPassword = it },
             label = { Text(text = "Password") },
+            singleLine = true,
             modifier = Modifier
                 .fillMaxWidth()
                 .padding(10.dp)

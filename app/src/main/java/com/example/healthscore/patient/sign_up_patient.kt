@@ -65,7 +65,8 @@ fun Sign_up_patient(navController: NavHostController) {
             modifier = Modifier
                 .fillMaxWidth()
                 .padding(10.dp),
-            keyboardOptions = KeyboardOptions(imeAction = ImeAction.Next)
+            keyboardOptions = KeyboardOptions(imeAction = ImeAction.Next),
+            singleLine = true
         )
         OutlinedTextField(
             value = userAge,
@@ -74,7 +75,8 @@ fun Sign_up_patient(navController: NavHostController) {
             modifier = Modifier
                 .fillMaxWidth()
                 .padding(10.dp),
-            keyboardOptions = KeyboardOptions(imeAction = ImeAction.Next)
+            keyboardOptions = KeyboardOptions(imeAction = ImeAction.Next),
+            singleLine = true
         )
         OutlinedTextField(
             value = userGender,
@@ -83,7 +85,8 @@ fun Sign_up_patient(navController: NavHostController) {
             modifier = Modifier
                 .fillMaxWidth()
                 .padding(10.dp),
-            keyboardOptions = KeyboardOptions(imeAction = ImeAction.Next)
+            keyboardOptions = KeyboardOptions(imeAction = ImeAction.Next),
+            singleLine = true
         )
         OutlinedTextField(
             value = userMail,
@@ -92,13 +95,15 @@ fun Sign_up_patient(navController: NavHostController) {
             modifier = Modifier
                 .fillMaxWidth()
                 .padding(10.dp),
-            keyboardOptions = KeyboardOptions(imeAction = ImeAction.Next)
+            keyboardOptions = KeyboardOptions(imeAction = ImeAction.Next),
+            singleLine = true
         )
 
         OutlinedTextField(
             value = iniPassword,
             onValueChange = { iniPassword = it },
             label = { Text(text = "Enter Password") },
+            singleLine = true,
             visualTransformation = if (showPassword) VisualTransformation.None
             else PasswordVisualTransformation(),
             trailingIcon = {
@@ -123,7 +128,7 @@ fun Sign_up_patient(navController: NavHostController) {
         OutlinedTextField(
             value = cnfPassword,
             onValueChange = { cnfPassword = it },
-            label = { Text(text = "Confirm Password") },
+            label = { Text(text = "Confirm Password") },singleLine = true,
             visualTransformation = if (showPassword) VisualTransformation.None
             else PasswordVisualTransformation(),
             modifier = Modifier
@@ -131,7 +136,7 @@ fun Sign_up_patient(navController: NavHostController) {
                 .padding(10.dp),
             keyboardOptions = KeyboardOptions(imeAction = ImeAction.Done),
         )
-        TextButton(modifier = Modifier.align(Alignment.Start), onClick = { /*TODO*/ }) {
+        TextButton(modifier = Modifier.align(Alignment.Start), onClick = { navController.navigate("patient_sign_in") }) {
             Text(text = "Already have an account?", modifier = Modifier.padding(bottom = 10.dp))
         }
         Button(

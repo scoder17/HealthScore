@@ -89,13 +89,13 @@ fun Navigation(){
                         label = {
                             Text(
                                 text = it.title,
-                                color = if (currentRoute == it.route) Color.DarkGray else Color.LightGray
+                                color = if (currentRoute == it.route) Color(0xFF36B0B8) else Color.LightGray
                             )
                         },
                         icon = {
                             Icon(
                                 imageVector = it.icon, contentDescription = null,
-                                tint = if (currentRoute == it.route) Color.DarkGray else Color.LightGray
+                                tint = if (currentRoute == it.route) Color(0xFF36B0B8) else Color.LightGray
                             )
                         },
                         onClick = {
